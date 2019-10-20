@@ -39,7 +39,7 @@ module.exports = function(homebridge) {
     Characteristic = homebridge.hap.Characteristic;
     UUIDGen = homebridge.hap.uuid;
     
-    homebridge.registerPlatform("homebridge-mi-aqara", "MiAqaraPlatform", MiAqaraPlatform, true);
+    homebridge.registerPlatform("homebridge-mi-aqara-repairmac", "MiAqaraPlatform", MiAqaraPlatform, true);
 }
 
 function MiAqaraPlatform(log, config, api) {
@@ -71,7 +71,7 @@ function MiAqaraPlatform(log, config, api) {
     this.doRestThings(api);
     
     this.log.info("**************************************************************");
-    this.log.info("           MiAqaraPlatform v"+packageFile.version+" By YinHang");
+    this.log.info("           MiAqaraPlatform v"+packageFile.version+" By YinHang And ZWY");
     this.log.info("  GitHub: https://github.com/YinHangCode/homebridge-mi-aqara  ");
     this.log.info("                                         QQ Group: 107927710  ");
     this.log.info("**************************************************************");

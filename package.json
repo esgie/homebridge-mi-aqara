@@ -1,19 +1,23 @@
 {
-  "name": "homebridge-mi-aqara",
-  "version": "0.8.0", 
-  "description": "XiaoMi Aqara plugins for HomeBridge(https://github.com/nfarina/homebridge).",
-  "license": "GPL",
-  "keywords": [
-    "homebridge-plugin"
-  ],
-  "author": "hang.yin",
+  "name": "homebridge-mi-aqara-repairmac",
+  "version": "0.8.2",
+  "description": "repair homebridge-mi-aqara mac 04c...",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/YinHangCode/homebridge-mi-aqara"
+    "url": "git+https://github.com/HolmesZhao/homebridge-mi-aqara.git"
   },
+  "keywords": [
+    "mi-aqara"
+  ],
+  "author": "zwy",
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/YinHangCode/homebridge-mi-aqara/issues"
+    "url": "https://github.com/HolmesZhao/homebridge-mi-aqara/issues"
   },
+  "homepage": "https://github.com/HolmesZhao/homebridge-mi-aqara#readme",
   "engines": {
     "node": ">=0.12.0",
     "homebridge": ">=0.4.1"
