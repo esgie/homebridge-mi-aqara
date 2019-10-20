@@ -429,6 +429,12 @@ MiAqaraPlatform.prototype.parseMessage = function(msg, rinfo) {
         return;
     }
     
+    if (jsonObj['sid'].length < 12) {
+        jsonObj['sid'] =  "0" + jsonObj['sid'];
+    }
+	
+	console.log('sid_zwy: ' + jsonObj['sid']);
+    
     // send mqtt message
     if(that.mqttClient) {
         that.sendMQTTMessage4ParseMessage(msg, rinfo);
