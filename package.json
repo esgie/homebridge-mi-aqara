@@ -1,6 +1,6 @@
 {
   "name": "homebridge-mi-aqara-repairmac",
-  "version": "0.8.6(2020-04-02)",
+  "version": "0.8.6",
   "description": "repair homebridge-mi-aqara mac 04c...",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
