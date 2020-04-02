@@ -1,4 +1,4 @@
-# homebridge-mi-aqara
+# homebridge-mi-aqara (repair homebridge-mi-aqara mac 04c...)
 [![npm version](https://badge.fury.io/js/homebridge-mi-aqara.svg)](https://badge.fury.io/js/homebridge-mi-aqara)
 [![npm version](https://img.shields.io/badge/releases-0.8.0-blue.svg)](https://github.com/YinHangCode/homebridge-mi-aqara)
 [![npm version](https://img.shields.io/badge/dev-0.8.0-yellow.svg)](https://github.com/YinHangCode/homebridge-mi-aqara/tree/dev)
