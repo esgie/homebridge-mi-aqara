@@ -32,6 +32,8 @@ const serverMQTTClientPrefix = "/homebridge-mi-aqara";
 
 var PlatformAccessory, Accessory, Service, Characteristic, UUIDGen;
 
+var logOnce = runOnce((e) => { console.log(e) });
+
 module.exports = function(homebridge) {
     PlatformAccessory = homebridge.platformAccessory;
     Accessory = homebridge.hap.Accessory;
@@ -433,7 +435,7 @@ MiAqaraPlatform.prototype.parseMessage = function(msg, rinfo) {
         jsonObj['sid'] =  "0" + jsonObj['sid'];
     }
 	
-	console.log('sid_zwy: ' + jsonObj['sid']);
+    logOnce('sid_zwy: ' + jsonObj['sid']);
     
     // send mqtt message
     if(that.mqttClient) {
@@ -869,3 +871,18 @@ MiAqaraPlatform.prototype.unregisterPlatformAccessories = function(accessories) 
         that.AccessoryUtil.remove(accessory.UUID);
     });
 }
+
+
+function runOnce(fn, context) { //控制让函数只触发一次
+    return function () {
+      try {
+        fn.apply(context || this, arguments);
+      }
+      catch (e) {
+        // console.error(e);//一般可以注释掉这行
+      }
+      finally {
+        fn = null;
+      }
+    }
+  }
