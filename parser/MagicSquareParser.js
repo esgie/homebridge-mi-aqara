@@ -15,6 +15,8 @@ class MagicSquareParser extends DeviceParser {
             'MagicSquare_StatelessProgrammableSwitch_TapTwice': MagicSquareStatelessProgrammableSwitchTapTwiceParser,
             'MagicSquare_StatelessProgrammableSwitch_ShakeAir': MagicSquareStatelessProgrammableSwitchShakeAirParser,
             'MagicSquare_StatelessProgrammableSwitch_Rotate': MagicSquareStatelessProgrammableSwitchRotateParser,
+            'MagicSquare_StatelessProgrammableSwitch_Gestures': MagicSquareStatelessProgrammableSwitchGesturesParser,
+            'MagicSquare_StatelessProgrammableSwitch_Rotations': MagicSquareStatelessProgrammableSwitchRotationsParser,
             'MagicSquare_Switch_VirtualFlip90': MagicSquareSwitchVirtualFlip90Parser,
             'MagicSquare_Switch_VirtualFlip180': MagicSquareSwitchVirtualFlip180Parser,
             'MagicSquare_Switch_VirtualMove': MagicSquareSwitchVirtualMoveParser,
@@ -189,6 +191,52 @@ class MagicSquareStatelessProgrammableSwitchRotateParser extends MagicSquareStat
         
         if(value === 'rotate') {
             return this.Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS;
+        } else {
+            return defaultValue;
+        }
+    }
+}
+
+class MagicSquareStatelessProgrammableSwitchGesturesParser extends MagicSquareStatelessProgrammableSwitchBaseParser {
+    getProgrammableSwitchEventCharacteristicValue(jsonObj, defaultValue) {
+        var value = null;
+        var proto_version_prefix = this.platform.getProtoVersionPrefixByProtoVersion(this.platform.getDeviceProtoVersionBySid(jsonObj['sid']));
+        if(1 == proto_version_prefix) {
+            value = this.getValueFrJsonObjData1(jsonObj, 'status');
+        } else if(2 == proto_version_prefix) {
+            value = this.getValueFrJsonObjData2(jsonObj, 'cube_status');
+        } else {
+        }
+        
+        if(value === 'move') {
+            return this.Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS;
+        } else if(value === 'shake_air') {
+            return this.Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS;
+        } else if(value === 'tap_twice') {
+            return this.Characteristic.ProgrammableSwitchEvent.LONG_PRESS;
+        } else {
+            return defaultValue;
+        }
+    }
+}
+
+class MagicSquareStatelessProgrammableSwitchRotationsParser extends MagicSquareStatelessProgrammableSwitchRotationsParser {
+    getProgrammableSwitchEventCharacteristicValue(jsonObj, defaultValue) {
+        var value = null;
+        var proto_version_prefix = this.platform.getProtoVersionPrefixByProtoVersion(this.platform.getDeviceProtoVersionBySid(jsonObj['sid']));
+        if(1 == proto_version_prefix) {
+            value = this.getValueFrJsonObjData1(jsonObj, 'status');
+        } else if(2 == proto_version_prefix) {
+            value = this.getValueFrJsonObjData2(jsonObj, 'cube_status');
+        } else {
+        }
+        
+        if(value === 'flip90') {
+            return this.Characteristic.ProgrammableSwitchEvent.SINGLE_PRESS;
+        } else if(value === 'flip180') {
+            return this.Characteristic.ProgrammableSwitchEvent.DOUBLE_PRESS;
+        } else if(value === 'rotate') {
+            return this.Characteristic.ProgrammableSwitchEvent.LONG_PRESS;
         } else {
             return defaultValue;
         }
